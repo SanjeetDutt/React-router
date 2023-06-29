@@ -3,12 +3,6 @@ import {NavLink} from "react-router-dom";
 
 function RootNavigation(){
 
-    const activeClassHandler = (state:{isActive:boolean})=>{
-        if(state.isActive)
-            return styles.active
-        return null
-    }
-
     return <nav className={styles.navigation}>
         <div className={styles.navigation__brandName}>
             <h1>Event Management</h1>
@@ -16,12 +10,12 @@ function RootNavigation(){
         <div className={styles.navigation__links}>
             <ul>
                 <li>
-                    <NavLink to="/" className={activeClassHandler}>
+                    <NavLink to="/" className="link-button link-button--primary">
                         Home Page
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/event" className={activeClassHandler}>
+                    <NavLink to="/event" className="link-button link-button--primary">
                         Events
                     </NavLink>
                 </li>

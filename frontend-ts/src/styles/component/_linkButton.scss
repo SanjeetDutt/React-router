@@ -1,0 +1,19 @@
+a.link-button{
+  padding: .75em 1em;
+  margin: .75em 1em;
+
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--hover-transition);
+  text-decoration: none;
+
+  &--primary{
+    border: 1px solid var(--voilet-100);
+    color: var(--voilet-100);
+
+    &:hover, &.active{
+      background: var(--voilet-100);
+      color: var(--white-100);
+    }
+  }
+}

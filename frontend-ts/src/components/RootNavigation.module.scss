@@ -17,33 +17,9 @@
     }
 
     &__links ul{
-
         list-style: none;
-
         li {
             display: inline;
-            a{
-                padding: .75em 1em;
-                margin: .75em 1em;
-                border: 1px solid var(--voilet-100);
-                border-radius: 5px;
-                cursor: pointer;
-                transition: var(--hover-transition);
-                text-decoration: none;
-                color: var(--voilet-100);
-
-                &:hover{
-                    background: var(--voilet-100);
-                    color: var(--white-100);
-                }
-
-                &.active{
-                    background: var(--voilet-100);
-                    color: var(--white-100);
-                }
-            }
         }
-
-
     }
 }
