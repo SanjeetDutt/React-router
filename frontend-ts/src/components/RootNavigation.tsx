@@ -1,5 +1,7 @@
+import styles from "./RootNavigation.module.scss"
+
 function RootNavigation(){
-    return <div>
+    return <div className={styles.navigation}>
         <ul>
             <li>Home Page</li>
             <li>Events</li>
