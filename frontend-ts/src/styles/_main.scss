@@ -3,4 +3,7 @@
 @import "variables/media";
 @import "variables/sizing";
 
-@import "src/styles/component/linkButton";
+@import "component/linkButton";
+@import "utilities/sizing";
+@import "utilities/background";
+@import "utilities/typography";
