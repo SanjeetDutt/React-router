@@ -1,17 +1,24 @@
 class Event{
     title: string;
-    date: Date;
+    date: string;
     description: string;
     image: string;
-    id:number;
+    id:string;
 
+    constructor() {
+        this.title = "";
+        this.date = "";
+        this.description = "";
+        this.image = "";
+        this.id = "";
+    }
 
-    constructor(id:number, title: string, date: Date, description: string, image: string) {
-        this.title = title;
-        this.date = date;
-        this.description = description;
-        this.image = image;
-        this.id = id
+    parse(res:{id:string; date:string; description:string; image:string; title:string}){
+        this.id = res.id
+        this.date = res.date
+        this.description = res.description
+        this.image = res.image
+        this.title = res.title
     }
 }
 

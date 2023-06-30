@@ -1,37 +1,50 @@
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import Event from "../../Models/Event"
 import {EventCard} from "../../components/Event/EventCard";
 import styles from "./EventList.module.scss"
+import {Await, defer, useLoaderData} from "react-router-dom";
+import http from "../../Utilities/HttpRequest"
 
 function EventList(){
-    const [events, setEvents] = useState<Event[]>([])
+    const events = useLoaderData() as {events:[]} // IMPORTANT: Telling React TS type of data is expecting
 
-    //DUMMY EVENTS
-    useEffect(()=>{
-        setEvents((prevState)=>{
-            return prevState
-                .concat(new Event(1,"Test 1", new Date(), "desc", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvrvqk6gYXCSDYmpzRMNMdypsiZ1e68nFOA&usqp=CAU"))
-                .concat(new Event(2,"Test 2", new Date(), "desc", "https://i0.wp.com/www.thebigday.co.in/wp-content/uploads/2021/01/Corporate-Events.jpg?fit=1500%2C700&ssl=1"))
-                .concat(new Event(3,"Test 3", new Date(), "desc", "https://www.eventbrite.com/blog/wp-content/uploads/2022/08/nicholas-green-nPz8akkUmDI-unsplash.jpg"))
-                .concat(new Event(4,"Test 4", new Date(), "desc", "https://eventacademy.com/wp-content/uploads/2018/11/cambridge-corporate-photographer-io-2016-003.jpg"))
-                .concat(new Event(5,"Test 5", new Date(), "desc", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvrvqk6gYXCSDYmpzRMNMdypsiZ1e68nFOA&usqp=CAU"))
-                .concat(new Event(6,"Test 6", new Date(), "desc", "https://i0.wp.com/www.thebigday.co.in/wp-content/uploads/2021/01/Corporate-Events.jpg?fit=1500%2C700&ssl=1"))
-                .concat(new Event(7,"Test 7", new Date(), "desc", "https://www.eventbrite.com/blog/wp-content/uploads/2022/08/nicholas-green-nPz8akkUmDI-unsplash.jpg"))
-                .concat(new Event(8,"Test 8", new Date(), "desc", "https://eventacademy.com/wp-content/uploads/2018/11/cambridge-corporate-photographer-io-2016-003.jpg"))
-                .concat(new Event(9,"Test 9", new Date(), "desc", "https://www.gpj.com/wp-content/uploads/2019/03/Think.2019.Stage_.png"))
+    const parseResponse = (response:any[]):Event[]=>{
+        return response.map(res=>{
+            const event = new Event()
+            event.parse(res)
+            return event
         })
-    },[])
+    }
 
     return (
-        <div className={styles.eventList}>
-            {events.map(event=>
-                <div className={styles.eventList__item}>
-                    <EventCard event={event} />
-                </div>
-            )}
+        // 3. As data take time to load, meanwhile show some fallback message
+        <Suspense fallback={<p>LOADING</p>}>
+            <div className={styles.eventList}>
 
-        </div>
+                {/*Once data is received, load the content*/}
+                <Await resolve={events.events}>
+                    {(loadedEvents)=>  parseResponse(loadedEvents).map(event =>
+                        <div className={styles.eventList__item} key={event.id}>
+                            <EventCard event={event}/>
+                        </div>
+                    )}
+                </Await>
+            </div>
+        </Suspense>
     )
 }
 
 export default EventList
+
+// 1. Contacting server to fetch result
+const loadEvent = async () => {
+    const res = await http.get("/events");
+    return res.events
+}
+
+// 2. Saying React that response will take time to load
+export const EventLoder = () => {
+    return defer({
+        events: loadEvent()
+    })
+}

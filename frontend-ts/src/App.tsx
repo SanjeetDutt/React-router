@@ -4,7 +4,7 @@ import RootLayout from "./components/Layout/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import EventLayout from "./components/Layout/EventLayout";
-import EventList from "./pages/Event/EventList";
+import EventList, {EventLoder} from "./pages/Event/EventList";
 import EventDetails from "./pages/Event/EventDetails";
 import EventAddEdit from "./pages/Event/EventAddEdit";
 
@@ -27,7 +27,8 @@ const router = createBrowserRouter([
         children:[
           {
             index:true,
-            element:<EventList />
+            element:<EventList />,
+            loader: EventLoder // 0. Before loading page, React see is any data to load(doesn't know if it take time or not)
           },
           {
             path:":eventId",

@@ -4,8 +4,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 export const EventCard: React.FC<{ event: Event }> = (props) => {
-    const parseDate = (date: Date): string => {
-        return date.toDateString()
+    const parseDate = (date: string): string => {
+        return date
     }
     return (
         <div className={styles.eventCard}>
@@ -22,7 +22,7 @@ export const EventCard: React.FC<{ event: Event }> = (props) => {
 
             <div className={styles.eventCard__container}>
 
-                <span className={styles.eventCard__date}>{parseDate(props.event.date)}</span>
+                <span className={styles.eventCard__date}>{props.event.date}</span>
                 <p className={styles.eventCard__description}>{props.event.description}</p>
             </div>
 
