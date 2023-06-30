@@ -1,0 +1,12 @@
+.eventList{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+  margin-top: 3rem;
+  padding: 0 30px;
+
+  &__item{
+    flex: 0 1 30%;
+  }
+}

@@ -1,0 +1,68 @@
+.eventCard{
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--black-transparent-20);
+  box-shadow: var(--box-shadow-100);
+
+  &__image{
+    position: relative;
+    img{
+      height: 15rem;
+      width: 100%;
+      object-fit: cover;
+
+    }
+
+    &Title{
+      font-size: 1.5em;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: calc(100% - 20px);
+      color: var(--black-100);
+
+      -webkit-text-fill-color: var(--black-100);
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: var(--white-100);
+    }
+
+  }
+
+  &__container{
+    padding: 1rem 1rem 3rem;
+
+  }
+
+  &__editLink{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    text-decoration: none;
+    color: var(--black-100);
+    font-size: 12px;
+    background: var(--gray-100);
+    box-shadow: var(--box-shadow-100);
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  &__title{
+    font-size: 1.5em;
+  }
+
+  &__date{
+    font-size: .75rem;
+    background: var(--gray-100);
+    padding: 7px;
+    border-radius: 3px;
+    font-weight: 500;
+    box-shadow: var(--box-shadow-100);
+
+  }
+
+  &__description{
+    margin: 1rem 0;
+    font-size: .75rem;
+    font-weight: 600;
+  }
+}

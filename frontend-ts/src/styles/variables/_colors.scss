@@ -3,9 +3,11 @@
   --white-100 : #fff;
   --blue-100 : #45CFDD;
   --voilet-100: #6527BE;
+  --gray-100:#e0e0e0;
 
   --black-transparent-35: rgba(0, 0, 0, 0.35);
   --black-transparent-20: rgba(100, 100, 111, 0.2);
+  --box-shadow-100: var(--black-transparent-20) 0 5px 15px;
 
 
 
@@ -16,10 +18,11 @@
   --white-100 : #000;
   --blue-100 : #45CFDD;
   --voilet-100: #6527BE;
+  --gray-100:#e0e0e0;
 
   --black-transparent-35: rgba(0, 0, 0, 0.35);
   --black-transparent-20: rgba(100, 100, 111, 0.2);
-
+  --box-shadow-100: var(--black-transparent-20) 0 5px 15px;
 
 }
 
