@@ -1,5 +1,5 @@
 import http from "../../Utilities/HttpRequest"
-import {Await, defer, LoaderFunctionArgs, useLoaderData} from "react-router-dom";
+import {Await, defer, LoaderFunctionArgs, useRouteLoaderData} from "react-router-dom";
 import Event, {eventResponse} from "../../Models/Event";
 import {Suspense} from "react";
 
@@ -25,9 +25,7 @@ const renderEvent = (eventResponse: eventResponse) => {
 
 
 function EventDetails(){
-    const {event} = useLoaderData() as {event:eventResponse}
-
-
+    const {event} = useRouteLoaderData("event-details") as {event:eventResponse}
 
     return<Suspense fallback={<p>Loading</p>}>
         <Await resolve={event}>
