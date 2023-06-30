@@ -13,7 +13,7 @@ class Event{
         this.id = "";
     }
 
-    parse(res:{id:string; date:string; description:string; image:string; title:string}){
+    parse(res:eventResponse){
         this.id = res.id
         this.date = res.date
         this.description = res.description
@@ -23,3 +23,7 @@ class Event{
 }
 
 export default Event
+
+export type eventResponse = {
+    id:string; date:string; description:string; image:string; title:string
+}

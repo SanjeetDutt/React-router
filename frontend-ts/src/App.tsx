@@ -5,7 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import EventLayout from "./components/Layout/EventLayout";
 import EventList, {EventLoder} from "./pages/Event/EventList";
-import EventDetails from "./pages/Event/EventDetails";
+import EventDetails, {LoadEvent} from "./pages/Event/EventDetails";
 import EventAddEdit from "./pages/Event/EventAddEdit";
 
 
@@ -35,7 +35,8 @@ const router = createBrowserRouter([
             children:[
               {
                 index:true,
-                element:<EventDetails />
+                element:<EventDetails />,
+                loader: LoadEvent
               },
               {
                 path:"edit",
