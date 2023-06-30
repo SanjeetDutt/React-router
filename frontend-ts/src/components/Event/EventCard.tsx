@@ -11,8 +11,11 @@ export const EventCard: React.FC<{ event: Event }> = (props) => {
         <div className={styles.eventCard}>
             <div className={styles.eventCard__image}>
                 <img src={props.event.image} alt={props.event.title}/>
-                <h5 className={styles.eventCard__imageTitle}>{props.event.title}</h5>
-                <Link to={`${props.event.id}`} className={styles.eventCard__editLink}>
+                <Link to={`${props.event.id}`}>
+                    <h5 className={styles.eventCard__imageTitle}>{props.event.title}</h5>
+                </Link>
+
+                <Link to={`${props.event.id}/edit`} className={styles.eventCard__editLink}>
                     Edit
                 </Link>
             </div>
